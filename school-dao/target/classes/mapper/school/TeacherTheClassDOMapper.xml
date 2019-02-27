@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.school.dao.mapper.school.TeacherTheClassDOMapper" >
+  <resultMap id="BaseResultMap" type="com.school.dao.model.school.TeacherTheClassDO" >
+    <constructor >
+      <arg column="t_name" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="c_name" jdbcType="VARCHAR" javaType="java.lang.String" />
+    </constructor>
+  </resultMap>
+  <insert id="insert" parameterType="com.school.dao.model.school.TeacherTheClassDO" >
+    insert into teacher_the_class (t_name, c_name)
+    values (#{tName,jdbcType=VARCHAR}, #{cName,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.school.dao.model.school.TeacherTheClassDO" >
+    insert into teacher_the_class
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="tName != null" >
+        t_name,
+      </if>
+      <if test="cName != null" >
+        c_name,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="tName != null" >
+        #{tName,jdbcType=VARCHAR},
+      </if>
+      <if test="cName != null" >
+        #{cName,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+</mapper>
